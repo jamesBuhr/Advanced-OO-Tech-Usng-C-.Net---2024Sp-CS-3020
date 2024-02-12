@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GithubRepos\\CS2160\\battleship_CS2160\\battleship_CS2160.csproj",
+      "projectUniqueName": "C:\\GithubRepos\\CS2160\\Advanced-OO-Tech-Usng-C-.Net---2024Sp-CS-3020\\battleship_CS2160\\battleship_CS2160.csproj",
       "projectName": "battleship_CS2160",
-      "projectPath": "C:\\GithubRepos\\CS2160\\battleship_CS2160\\battleship_CS2160.csproj",
+      "projectPath": "C:\\GithubRepos\\CS2160\\Advanced-OO-Tech-Usng-C-.Net---2024Sp-CS-3020\\battleship_CS2160\\battleship_CS2160.csproj",
       "packagesPath": "C:\\Users\\jimbb\\.nuget\\packages\\",
-      "outputPath": "C:\\GithubRepos\\CS2160\\battleship_CS2160\\obj\\",
+      "outputPath": "C:\\GithubRepos\\CS2160\\Advanced-OO-Tech-Usng-C-.Net---2024Sp-CS-3020\\battleship_CS2160\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jimbb\\AppData\\Roaming\\NuGet\\NuGet.Config",

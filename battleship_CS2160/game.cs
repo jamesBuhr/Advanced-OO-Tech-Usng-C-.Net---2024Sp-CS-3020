@@ -59,6 +59,12 @@
                 }
             }
         }
+
+        public void set_Ship_Location(Ships ship)
+        {
+
+            throw new System.NotImplementedException();
+        }
     }
 
     public class Player : Game
@@ -103,11 +109,6 @@
             throw new System.NotImplementedException();
         }
 
-        public void set_Ship_Location()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void get_ship_location()
         {
             throw new System.NotImplementedException();
@@ -116,7 +117,7 @@
 
     public class Other_Player : Game
     {
-        List<Ships> ships;
+        List<Ships> ship_List;
         private int starting_number_of_ships;
         private int number_Of_Ships_Remaining;
         private string[] ship_locations;
@@ -125,7 +126,7 @@
 
         public Other_Player()
         {
-            ships = new List<Ships> {
+            ship_List = new List<Ships> {
                 new Carrier(),
                 new Battleship(),
                 new Submarine(),
@@ -134,20 +135,16 @@
                 new Destroyer()
             };
 
-            starting_number_of_ships = ships.Count;
+            starting_number_of_ships = ship_List.Count;
             ship_locations = new string[starting_number_of_ships];
             number_Of_Ships_Remaining = starting_number_of_ships;
 
             throw new System.NotImplementedException();
         }
 
-        public void place_Ships()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void get_ship_locations()
-        {
+        {   
+            foreach (Ships ship in ship_List)
             throw new System.NotImplementedException();
         }
 
@@ -162,6 +159,11 @@
         }
 
         public void display()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void set_Ship_Location()
         {
             throw new System.NotImplementedException();
         }
