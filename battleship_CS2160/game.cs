@@ -81,9 +81,15 @@
                 new Destroyer()
             };
 
+            
             starting_number_of_ships = ships.Count;
             ship_locations = new string[starting_number_of_ships];
             number_Of_Ships_Remaining = starting_number_of_ships;
+            create_Board();
+            display_board();
+
+            
+
 
         }
 
@@ -126,8 +132,6 @@
             starting_number_of_ships = ships.Count;
             ship_locations = new string[starting_number_of_ships];
             number_Of_Ships_Remaining = starting_number_of_ships;
-
-
 
             throw new System.NotImplementedException();
         }

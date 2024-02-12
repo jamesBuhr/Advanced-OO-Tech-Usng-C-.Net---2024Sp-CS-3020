@@ -4,5 +4,4 @@ using battleship_CS2160;
 Console.WriteLine("hello james");
 
 Player player = new Player();
-player.create_Board();
-player.display_board();
+
