@@ -60,10 +60,22 @@
             }
         }
 
-        public void set_Ship_Location(Ships ship)
+        static int[] ConvertInputToIndices(string input)
         {
+            // Ensure the input is in the correct format (e.g., "A4")
+            if (input.Length != 2 || !char.IsLetter(input[0]) || !char.IsDigit(input[1]))
+            {
+                throw new ArgumentException("Invalid input format. Please enter a location in the format 'A4'.");
+            }
 
-            throw new System.NotImplementedException();
+            // Convert the letter part to a numeric index (A -> 0, B -> 1, etc.)
+            int col = char.ToUpper(input[0]) - 'A';
+
+            // Convert the digit part to a numeric index (1 -> 0, 2 -> 1, etc.)
+            int row = int.Parse(input[1].ToString()) - 1;
+
+            // Return the indices as an array
+            return new int[] { row, col };
         }
     }
 
