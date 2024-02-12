@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="C:\GithubRepos\CS2160\Advanced-OO-Tech-Usng-C-.Net---2024Sp-CS-3020\battleship_CS2160\game.cs" Link="game.cs" />
-  </ItemGroup>
-
 </Project>
