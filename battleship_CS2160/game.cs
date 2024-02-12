@@ -67,9 +67,7 @@
         private int starting_number_of_ships;
         private int number_Of_Ships_Remaining;
         private String[] ship_locations;
-
-
-
+    
         public Player()
         {
             ships = new List<Ships> {
@@ -81,18 +79,15 @@
                 new Destroyer()
             };
 
-            
             starting_number_of_ships = ships.Count;
             ship_locations = new string[starting_number_of_ships];
             number_Of_Ships_Remaining = starting_number_of_ships;
             create_Board();
-            display_board();
-
-            
-
+            display_board();   
 
         }
 
+        
         public void cheak_hit(string location)
         {
             throw new System.NotImplementedException();
@@ -105,6 +100,16 @@
 
         public void display()
         {   
+            throw new System.NotImplementedException();
+        }
+
+        public void set_Ship_Location()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void get_ship_location()
+        {
             throw new System.NotImplementedException();
         }
     }
