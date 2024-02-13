@@ -22,8 +22,15 @@ namespace battleship_CS2160
             throw new System.NotImplementedException();
         }
 
-        public void cheak_win_condishions()
+        public void cheak_win_condishions(Player player,Opponent opponent)
         {
+            if (player.total_ship_health <= 0)
+            {
+                Console.WriteLine("YOU LOSE, YOU MUST REALLY SUCK!");
+            }
+            else if (opponent.number_of_total_health <= 0) {
+                Console.WriteLine("YOU WIN ");
+            }
             throw new System.NotImplementedException();
         }
 
@@ -76,37 +83,38 @@ namespace battleship_CS2160
             // Check if vertical
             if (bowX == sternX)
             {
-                // Check each position along the ship's length
-                for (int i = 0; i < length_of_ship; i++)
-                {
-                    // Calculate the current position to check
-                    int currentY = sternY < bowY ? sternY + i : sternY - i;
+                // Determine the start and end positions for the ship along the Y-axis
+                int startY = Math.Min(bowY, sternY);
+                int endY = Math.Max(bowY, sternY);
 
-                    // If ship at the current position, return true
-                    if (get_Element(bowX, currentY))
+                // Check each position along the ship's length
+                for (int y = startY; y <= endY; y++)
+                {
+                    // If ship at any position, return true
+                    if (get_Element(bowX, y))
                     {
                         return true;
                     }
                 }
             }
-            // Check if ship  horizontal
+            // Check if horizontal
             else if (bowY == sternY)
             {
-                // Check each position along the ship's length
-                for (int i = 0; i < length_of_ship; i++)
-                {
-                    // Calculate the current position to check
-                    int currentX = sternX > bowX ? bowX + i : bowX - i;
+                // Determine the start and end positions for the ship along the X-axis
+                int startX = Math.Min(bowX, sternX);
+                int endX = Math.Max(bowX, sternX);
 
-                    // If there's a ship at the current position, return true (overlap detected)
-                    if (get_Element(currentX, bowY))
+                // Check each position along the ship's length
+                for (int x = startX; x <= endX; x++)
+                {
+                    // If ship at any position, return true
+                    if (get_Element(x, bowY))
                     {
                         return true;
                     }
                 }
             }
-
-            // If no overlaps were found, return false
+            // No overlap found, return false
             return false;
         }
 
@@ -145,11 +153,11 @@ namespace battleship_CS2160
     {
         List<Ships> player_Ship_List;
         private int starting_number_of_ships;
-        private int total_ship_health = 0;
+        public int total_ship_health = 0;
         private int ship_lengh_counter = 0;
         private int number_Of_Ships_Remaining;
         private int[,] ship_locations;
-        private string[,] player_Board;
+        public  string[,] player_Board;
 
 
         public Player()
@@ -286,6 +294,7 @@ namespace battleship_CS2160
                 else
                 {//triggers if there is ship overlap.
                     Console.WriteLine("ship cannot go there, please try again!");
+                    break;
                 }
 
 
@@ -295,14 +304,52 @@ namespace battleship_CS2160
         }
 
 
-        public void cheak_hit(string location)
+        public bool cheak_hit(int x, int y, string[,] board)
         {
-            throw new System.NotImplementedException();
+            bool is_There_A_Ship_At_This_Location = false;
+
+            string element_of_board = board[x, y];
+
+            if (board[y, x].Equals("[S]") || board[y, x].Equals("[X]") ){
+                is_There_A_Ship_At_This_Location = true;
+            }
+
+            return is_There_A_Ship_At_This_Location;
+
+            
+
         }
 
-        public void fire()
+        public void fire(Opponent opponent)
         {
-            throw new System.NotImplementedException();
+            string[,] board = opponent.opponent_board;
+            int[] location = new int[2];
+            Console.WriteLine("fire the cannon at location [X,Y]:");
+
+            string user_Input_Stern = Console.ReadLine();
+            location = convert_Cordents(user_Input_Stern);
+            int x = location[0];
+            int y = location[1];
+            bool hit = cheak_hit(x, y, opponent.opponent_board);
+
+            if (hit)
+            {
+                opponent.opponent_board[y, x] = "[X]";
+                opponent.number_of_total_health--;
+            }
+            else
+            {
+                board[y, x] = "[0]";
+            }
+
+            Console.Clear();
+            display_board(board);
+            Console.WriteLine("");
+            display_board(this.player_Board);
+
+
+
+
         }
 
         public void display()
@@ -331,8 +378,12 @@ namespace battleship_CS2160
         List<Ships> ship_List;
         private int starting_number_of_ships;
         private int number_Of_Ships_Remaining;
+        public int number_of_total_health;
         private string[] ship_locations;
-        string[,] opponent_board;
+        public string[,] opponent_board;
+        String lastShot = "";
+        int lastShotX = 0;
+        int lastShotY = 0;
 
 
 
@@ -347,19 +398,25 @@ namespace battleship_CS2160
                 new Destroyer(),
                 new Destroyer()
             };
-
+            number_of_total_health = 0;
+            foreach (Ships ship in ship_List)
+            {
+                this.number_of_total_health += ship.get_Length();
+            }
+            
+            
             opponent_board = create_Board();
             display_board(opponent_board);
             set_Ship_Location();
 
 
-            
+
 
             starting_number_of_ships = ship_List.Count;
             ship_locations = new string[starting_number_of_ships];
             number_Of_Ships_Remaining = starting_number_of_ships;
 
-            
+
         }
 
         public void get_ship_locations()
@@ -368,21 +425,95 @@ namespace battleship_CS2160
                 throw new System.NotImplementedException();
         }
 
-        public void fire()
+        public void fire(Player player)
         {
-            throw new System.NotImplementedException();
+            Random random = new Random();
+            int x=0;
+            int y=0;
+            int i = random.Next(2);
+
+
+            
+            if (this.lastShot.Equals("[X]")&& i % 1==0) {
+                y = this.lastShotX + random.Next(2);
+                    if(y < 0)
+                {
+                    y = 0;
+                }
+                else if (y > 10)
+                {
+                    y = 10;
+                }
+
+            }
+            else if (this.lastShotY.Equals("[X]") && i % 2 ==0) {
+                x = this.lastShotY+random.Next(2);
+
+                if (x < 0)
+                {
+                    x = 0;
+                }
+                else if (x > 10)
+                {
+                    x = 10;
+                }
+            }
+            else {
+                x = random.Next(10);
+                y = random.Next(10);
+            }
+            
+            
+
+            bool hit = cheak_hit(x, y, player.player_Board);
+
+            if (hit)
+            {
+                player.player_Board[y, x] = "[X]";
+                player.total_ship_health--;
+
+
+
+            }
+            else
+            {
+                player.player_Board[y, x] = "[0]";
+            }
+
+            this.lastShotX=x;
+            this.lastShotY=y;
+
+            Console.Clear();
+            display_board(opponent_board);
+            Console.WriteLine("");
+            display_board(player.player_Board);
+
+
+
+
         }
 
-        public void cheak_hit()
+        public bool cheak_hit(int x, int y, string[,] board)
         {
-            throw new System.NotImplementedException();
-        }
+            bool is_There_A_Ship_At_This_Location = false;
 
-  
+            string element_of_board = board[x, y];
+
+            if (board[y, x].Equals("[S]") || board[y, x].Equals("[X]"))
+            {
+                is_There_A_Ship_At_This_Location = true;
+            }
+
+            return is_There_A_Ship_At_This_Location;
+
+
+
+        }    
+
+
 
         public void set_Ship_Location()
         {
-
             foreach (Ships ship in ship_List)
             {
                 Random random = new Random();
