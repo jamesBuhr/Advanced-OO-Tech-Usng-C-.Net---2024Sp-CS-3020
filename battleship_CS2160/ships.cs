@@ -46,7 +46,7 @@ namespace battleship_CS2160
 
         public void set_SternY(int sternY)
         {   this.SternY = sternY;
-            throw new System.NotImplementedException();
+            
         }
 
         public void set_SternX(int sternX)
@@ -107,6 +107,17 @@ namespace battleship_CS2160
             this.length = 2;
             this.set_Health(this.length);
         }
+
+        public override string get_Name()
+        {
+            return this.Name;
+
+        }
+
+        public override int get_Length()
+        {
+            return this.length;
+        }
     }
 
     public class Submarine : Ships
@@ -122,6 +133,17 @@ namespace battleship_CS2160
             Name = "Submarine";
             this.length = 3;
             this.set_Health(this.length);
+        }
+
+        public override string get_Name()
+        {
+            return this.Name;
+
+        }
+
+        public override int get_Length()
+        {
+            return this.length;
         }
     }
 
@@ -139,6 +161,16 @@ namespace battleship_CS2160
             this.Name = "Battleship";
             this.length = 4;
             this.set_Health(this.length);
+        }
+        public override string get_Name()
+        {
+            return this.Name;
+
+        }
+
+        public override int get_Length()
+        {
+            return this.length;
         }
     }
 

@@ -3,5 +3,6 @@
 
 using battleship_CS2160;
 
-Player player = new Player();
+//Player player = new Player();
+Opponent opponent = new Opponent();
 
