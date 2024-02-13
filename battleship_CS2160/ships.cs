@@ -5,50 +5,43 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+
 
 namespace battleship_CS2160
 {
     public abstract class Ships
     {
-        private int health;
-        private int length;
-        private String[] location;
+        private int Health;
+        private int Length;
         private int BowX;
         private int BowY;
         private int SternX;
         private int SternY;
+        private string Name;
 
         public int get_health()
 
         {
-            return this.health;
+            return this.Health;
             throw new System.NotImplementedException();
         }
 
         public void set_Health(int health)
         {   
-            this.health = health;
+            this.Health = health;
         }
-
-        public void set_location(Ships ship)
-        {
-            
-            throw new System.NotImplementedException();
-        }
-
-        public void create_Location_Size(int size)
-        {   this.location = new String[size];
-        }
+                  
 
         public void set_BowX(int bowX)
         {
             this.BowX = bowX;
-            throw new System.NotImplementedException();
+           
         }
 
         public void set_BowY(int bowY)
         {   this.BowY = bowY;
-            throw new System.NotImplementedException();
         }
 
         public void set_SternY(int sternY)
@@ -56,9 +49,9 @@ namespace battleship_CS2160
             throw new System.NotImplementedException();
         }
 
-        public void set_sternX(int sternX)
+        public void set_SternX(int sternX)
         {   this.SternX = sternX;
-            throw new System.NotImplementedException();
+           
         }
 
         public int get_SternX()
@@ -73,7 +66,7 @@ namespace battleship_CS2160
             throw new System.NotImplementedException();
         }
 
-        public int get_bowX()
+        public int get_BowX()
         {
             return this.BowX;
             throw new System.NotImplementedException();
@@ -84,33 +77,51 @@ namespace battleship_CS2160
             return this.BowX;
             throw new System.NotImplementedException();
         }
+
+       public virtual int get_Length()
+        {
+            return this.Length;
+            
+        }
+
+        public string get_name()
+        {
+            return this.Name;
+            
+        }
     }
 
     public class Destroyer : Ships
-    {    int length = 2;
+    {
+
+        int length = 2;
          int BowX;
          int BowY;
          int SternX;
          int SternY;
+        private string Name;
 
         public Destroyer()
         {
+            Name = "Destroyer";
+            this.length = 2;
             this.set_Health(this.length);
-            create_Location_Size(this.length);
         }
     }
 
     public class Submarine : Ships
     {
+        string Name;
         int BowX;
         int BowY;
         int SternX;
         int SternY;
-        int length = 3;
+        int length;
         public Submarine()
         {
+            Name = "Submarine";
+            this.length = 3;
             this.set_Health(this.length);
-            create_Location_Size(this.length);
         }
     }
 
@@ -120,11 +131,14 @@ namespace battleship_CS2160
         int BowY;
         int SternX;
         int SternY;
-        int length = 4;
+        int length;
+        string Name;
+
         public Battleship()
         {
+            this.Name = "Battleship";
+            this.length = 4;
             this.set_Health(this.length);
-            create_Location_Size(this.length);
         }
     }
 
@@ -134,12 +148,19 @@ namespace battleship_CS2160
          int BowY;
          int SternX;
          int SternY;
-        int length = 5;
+         int length=5;
+         string Name;
+
         public Carrier()
         {
-            this.set_Health(this.length);
-            create_Location_Size(this.length);
-            
+            this.Name =  "Carrier";
+            this.length = 5;
+            this.set_Health(this.length);            
+        }
+
+        public override int get_Length()
+        {
+            return this.length;
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-using battleship_CS2160;
+﻿
+// See https://aka.ms/new-console-template for more information
 
-Console.WriteLine("hello james");
+using battleship_CS2160;
 
 Player player = new Player();
 

@@ -1,55 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="battleship_CS2160.Game">
-    <Position X="9" Y="0.75" Width="2" />
+    <Position X="9" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAgAgBAAAAABAAAABAAAAAACCAAAEAIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAgAgBAEAAABBAAABAQAAAACCAAAAABIAAAAAAAAA=</HashCode>
       <FileName>game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="battleship_CS2160.Ships">
-    <Position X="5.25" Y="0.5" Width="1.5" />
+    <Position X="4.75" Y="0.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAEAAAAAAkAAAAACAAAAAAMAAAAAAAAgQAg=</HashCode>
+      <HashCode>AAAACAAQAAcAEAMAAQAAAAZAAABgAAIAIAAEAIAAAAA=</HashCode>
       <FileName>ships.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="battleship_CS2160.Destroyer">
-    <Position X="4" Y="4.5" Width="1.5" />
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <InheritanceLine Type="battleship_CS2160.Ships" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="1.874" />
+        <Point X="4.25" Y="1.874" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAMAAEAAAAYAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ships.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="battleship_CS2160.Submarine">
-    <Position X="6" Y="4.5" Width="1.5" />
+    <Position X="1" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAMAAEAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ships.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="battleship_CS2160.Battleship">
-    <Position X="4" Y="7" Width="1.5" />
+    <Position X="0.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAMAAEAAAAYAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ships.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="battleship_CS2160.Carrier">
-    <Position X="6.25" Y="7" Width="1.5" />
+    <Position X="2.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAMAAEAAAAYAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>ships.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="battleship_CS2160.Player">
     <Position X="8.75" Y="4.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAQAAAQAAAAAAAAAAEAAEAEJAAAAAAEAAA=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAQAAACAAEAAAMAAEEEJAAAABAEAAA=</HashCode>
       <FileName>game.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="battleship_CS2160.Other_Player">
+  <Class Name="battleship_CS2160.Opponent">
     <Position X="12" Y="4.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAEAAEEEJBAAAAAEAAA=</HashCode>
