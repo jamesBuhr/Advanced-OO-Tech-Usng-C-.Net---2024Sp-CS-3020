@@ -7,7 +7,7 @@
         int turn_Number;
         int rows =10;
         int cols = 10; 
-        String[,] player_Board;
+        String [,] player_Board;
         private int opponent_Board;
 
         public void cycle_Turn()
@@ -105,21 +105,6 @@
 
         }
 
-        public bool get_Element(int row, int col) 
-        {
-            bool is_There_A_Ship_At_This_Location = false;
-
-            string element_of_board = player_Board[row, col];
-
-            if (element_of_board == "[S]") {
-                is_There_A_Ship_At_This_Location = true;
-            }
-
-            return is_There_A_Ship_At_This_Location;
-
-            throw new System.NotImplementedException();
-        }
-
         public void set_Ship_Inedx_On_Board(String[,] board,int row, int col)
         {
             board[row, col] = "[S]";
@@ -149,7 +134,7 @@
             };
 
             foreach (Ships ship in player_Ship_List) {
-                this.total_ship_health += ship.get_length();
+                this.total_ship_health += ship.get_Length();
             }
 
             ship_locations = new int[2,this.total_ship_health];
@@ -188,18 +173,21 @@
             int bow_y = 0;
             int stern_x = 0;
             int stern_y = 0;
-            int shipSize = ship.get_length();
+            int shipSize = ship.get_Length();
             int[] location;
-            bool ship_placed = false; 
+            
 
             // while the distince of the ship isnt equial to the absolute value of size of the ship : "-ship.length / +ship.length
             // continue to try fo find a place for the ship
-            while (
-                !ship_placed
+            while (bow_x - stern_x != ship.get_Length()
+        || bow_x - stern_x != ship.get_Length() * -1
+        || stern_y - bow_y != ship.get_Length()
+        || stern_y - bow_y != ship.get_Length() * -1
+
                 )                           
             {
                 //prompt user what ship to place and how big the ship is :
-                Console.WriteLine("\nPlace your " + ship.get_name() + " of length " + shipSize);
+                Console.WriteLine("\nPlace your " + ship.get_Name() + " of length " + shipSize);
                 //select location to place the Bow
                 Console.WriteLine("\nPlace Bow");
                 string user_Input_Bow = Console.ReadLine();
@@ -217,13 +205,13 @@
                 stern_y = location[1];
 
                 //cheak if ship in this location:
-                if (!cheak_If_Ship_Placed(ship.get_length(), bow_x, bow_y, stern_x, stern_y))
+                if (!cheak_If_Ship_Placed(ship.get_Length(), bow_x, bow_y, stern_x, stern_y))
                 {
 
                     //if ship vertical
-                    if (bow_x == stern_x && bow_x - stern_x == ship.get_length() || bow_x - stern_x == ship.get_length() * -1)
+                    if (bow_x == stern_x && bow_x - stern_x == ship.get_Length() || bow_x - stern_x == ship.get_Length() * -1)
                     {
-                        for (int i = 0; i < ship.get_length(); i++)
+                        for (int i = 0; i < ship.get_Length(); i++)
                         {
                             if (stern_y < bow_y)
                             {
@@ -241,10 +229,10 @@
 
                     }
                     //if ship horizontal
-                    else if (bow_y == stern_y && bow_x - stern_x == ship.get_length() || bow_x - stern_x == ship.get_length() * -1)
+                    else if (bow_y == stern_y && bow_x - stern_x == ship.get_Length() || bow_x - stern_x == ship.get_Length() * -1)
                     {
 
-                        for (int i = 0; i < ship.get_length(); i++)
+                        for (int i = 0; i < ship.get_Length(); i++)
                         {
 
                             if (stern_x > bow_x)
@@ -274,12 +262,12 @@
                     ship.set_SternY(stern_y);
 
                     //set global (X,Y)
-                    for (int i = 0; i < ship.get_length(); i++) {
+                    for (int i = 0; i < ship.get_Length(); i++) {
 
                         //set_Ship_On_Board()
                         //ship_locations[0, ship_lengh_counter - i];//x cord
                         //ship_locations[1, ship_lengh_counter - i]; //y cord 
-                        ship_placed = true;
+                        
                     }
 
 
@@ -295,6 +283,22 @@
            }
 
 
+        }
+
+        public bool get_Element(int row, int col)
+        {
+            bool is_There_A_Ship_At_This_Location = false;
+
+            string element_of_board = player_Board[row, col];
+
+            if (element_of_board == "[S]")
+            {
+                is_There_A_Ship_At_This_Location = true;
+            }
+
+            return is_There_A_Ship_At_This_Location;
+
+            throw new System.NotImplementedException();
         }
 
 

@@ -84,7 +84,7 @@ namespace battleship_CS2160
             
         }
 
-        public string get_name()
+        public virtual string get_Name()
         {
             return this.Name;
             
@@ -156,6 +156,11 @@ namespace battleship_CS2160
             this.Name =  "Carrier";
             this.length = 5;
             this.set_Health(this.length);            
+        }
+
+        public override string get_Name() { 
+            return this.Name;
+        
         }
 
         public override int get_Length()
