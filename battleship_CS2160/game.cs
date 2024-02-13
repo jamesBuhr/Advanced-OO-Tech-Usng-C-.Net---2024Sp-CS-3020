@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace battleship_CS2160
+﻿namespace battleship_CS2160
 
 {
 
-    public abstract class Game
+    public class Game
     {
         string[,] player_Board;
         int turn_Number;
@@ -15,23 +13,24 @@ namespace battleship_CS2160
         public Game()
         {
             player_Board = create_Board();
-        }
-        public void cycle_Turn()
-        {
-            this.turn_Number++;
-            throw new System.NotImplementedException();
+
         }
 
-        public void cheak_win_condishions(Player player,Opponent opponent)
+        public bool cheak_win_condishions(Player player, Opponent opponent)
         {
+            bool win = false;
             if (player.total_ship_health <= 0)
             {
                 Console.WriteLine("YOU LOSE, YOU MUST REALLY SUCK!");
+                win = true;
             }
-            else if (opponent.number_of_total_health <= 0) {
+            else if (opponent.number_of_total_health <= 0)
+            {
                 Console.WriteLine("YOU WIN ");
+                win = true;
             }
-            throw new System.NotImplementedException();
+            return win;
+
         }
 
         public void display_board(string[,] board)
@@ -52,6 +51,7 @@ namespace battleship_CS2160
                 Console.Write(ROWS[row]);                                                          //print the grid display A:J for each row. 
                 for (int col = 0; col < cols; col++)
                 {
+
                     Console.Write(board[row, col]);                                               //write whats in each element of the 2D Array
                 }
                 Console.WriteLine();                                                               // print a new line char to seperate each row
@@ -147,6 +147,15 @@ namespace battleship_CS2160
             display_board(board);
 
         }
+
+        public void play_game(Player player, Opponent opponent)
+        {
+            while (!cheak_win_condishions(player, opponent))
+            {
+                player.fire(opponent);
+                opponent.fire(player);
+            }
+        }
     }
 
     public class Player : Game
@@ -157,7 +166,7 @@ namespace battleship_CS2160
         private int ship_lengh_counter = 0;
         private int number_Of_Ships_Remaining;
         private int[,] ship_locations;
-        public  string[,] player_Board;
+        public string[,] player_Board;
 
 
         public Player()
@@ -310,13 +319,14 @@ namespace battleship_CS2160
 
             string element_of_board = board[x, y];
 
-            if (board[y, x].Equals("[S]") || board[y, x].Equals("[X]") ){
+            if (board[y, x].Equals("[S]") || board[y, x].Equals("[X]"))
+            {
                 is_There_A_Ship_At_This_Location = true;
             }
 
             return is_There_A_Ship_At_This_Location;
 
-            
+
 
         }
 
@@ -403,10 +413,11 @@ namespace battleship_CS2160
             {
                 this.number_of_total_health += ship.get_Length();
             }
-            
-            
+
+
             opponent_board = create_Board();
-            display_board(opponent_board);
+            Console.WriteLine(" ");
+            //display_board(opponent_board);
             set_Ship_Location();
 
 
@@ -428,15 +439,16 @@ namespace battleship_CS2160
         public void fire(Player player)
         {
             Random random = new Random();
-            int x=0;
-            int y=0;
+            int x = 0;
+            int y = 0;
             int i = random.Next(2);
 
 
-            
-            if (this.lastShot.Equals("[X]")&& i % 1==0) {
+
+            if (this.lastShot.Equals("[X]") && i % 1 == 0)
+            {
                 y = this.lastShotX + random.Next(2);
-                    if(y < 0)
+                if (y < 0)
                 {
                     y = 0;
                 }
@@ -446,8 +458,9 @@ namespace battleship_CS2160
                 }
 
             }
-            else if (this.lastShotY.Equals("[X]") && i % 2 ==0) {
-                x = this.lastShotY+random.Next(2);
+            else if (this.lastShotY.Equals("[X]") && i % 2 == 0)
+            {
+                x = this.lastShotY + random.Next(2);
 
                 if (x < 0)
                 {
@@ -458,12 +471,13 @@ namespace battleship_CS2160
                     x = 10;
                 }
             }
-            else {
+            else
+            {
                 x = random.Next(10);
                 y = random.Next(10);
             }
-            
-            
+
+
 
             bool hit = cheak_hit(x, y, player.player_Board);
 
@@ -480,8 +494,8 @@ namespace battleship_CS2160
                 player.player_Board[y, x] = "[0]";
             }
 
-            this.lastShotX=x;
-            this.lastShotY=y;
+            this.lastShotX = x;
+            this.lastShotY = y;
 
             Console.Clear();
             display_board(opponent_board);
@@ -508,7 +522,7 @@ namespace battleship_CS2160
 
 
 
-        }    
+        }
 
 
 

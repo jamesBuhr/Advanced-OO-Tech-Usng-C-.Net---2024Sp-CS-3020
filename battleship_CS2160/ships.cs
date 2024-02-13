@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-
-
-namespace battleship_CS2160
+﻿namespace battleship_CS2160
 {
     public abstract class Ships
     {
+        // create ships atrubutes 
         private int Health;
         private int Length;
         private int BowX;
@@ -29,29 +19,32 @@ namespace battleship_CS2160
         }
 
         public void set_Health(int health)
-        {   
+        {
             this.Health = health;
         }
-                  
+
 
         public void set_BowX(int bowX)
         {
             this.BowX = bowX;
-           
+
         }
 
         public void set_BowY(int bowY)
-        {   this.BowY = bowY;
+        {
+            this.BowY = bowY;
         }
 
         public void set_SternY(int sternY)
-        {   this.SternY = sternY;
-            
+        {
+            this.SternY = sternY;
+
         }
 
         public void set_SternX(int sternX)
-        {   this.SternX = sternX;
-           
+        {
+            this.SternX = sternX;
+
         }
 
         public int get_SternX()
@@ -78,16 +71,16 @@ namespace battleship_CS2160
             throw new System.NotImplementedException();
         }
 
-       public virtual int get_Length()
+        public virtual int get_Length()
         {
             return this.Length;
-            
+
         }
 
         public virtual string get_Name()
         {
             return this.Name;
-            
+
         }
     }
 
@@ -95,10 +88,10 @@ namespace battleship_CS2160
     {
 
         int length = 2;
-         int BowX;
-         int BowY;
-         int SternX;
-         int SternY;
+        int BowX;
+        int BowY;
+        int SternX;
+        int SternY;
         private string Name;
 
         public Destroyer()
@@ -176,23 +169,24 @@ namespace battleship_CS2160
 
     public class Carrier : Ships
     {
-         int BowX;
-         int BowY;
-         int SternX;
-         int SternY;
-         int length=5;
-         string Name;
+        int BowX;
+        int BowY;
+        int SternX;
+        int SternY;
+        int length = 5;
+        string Name;
 
         public Carrier()
         {
-            this.Name =  "Carrier";
+            this.Name = "Carrier";
             this.length = 5;
-            this.set_Health(this.length);            
+            this.set_Health(this.length);
         }
 
-        public override string get_Name() { 
+        public override string get_Name()
+        {
             return this.Name;
-        
+
         }
 
         public override int get_Length()
