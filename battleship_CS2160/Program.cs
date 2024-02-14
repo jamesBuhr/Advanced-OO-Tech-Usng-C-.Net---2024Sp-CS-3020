@@ -9,7 +9,3 @@ Player player = new Player();
 
 
 game.play_game(player, opponent);
-
-
-
-

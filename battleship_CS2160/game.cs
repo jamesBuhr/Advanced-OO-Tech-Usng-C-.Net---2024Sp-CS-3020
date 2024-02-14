@@ -10,14 +10,9 @@
     {
         string[,] player_Board;
         int rows = 10; // rows of the board 
-        int cols = 10;
+        int cols = 10; // cols on the board 
 
         private int opponent_Board;
-        public Game()
-        {
-            player_Board = create_Board();
-
-        }
 
         public bool cheak_win_condishions(Player player, Opponent opponent)
         {
@@ -119,9 +114,6 @@
 
         public virtual bool get_Element(int x, int y)
         {
-
-
-
             bool is_There_A_Ship_At_This_Location = false;
 
             string element_of_board = player_Board[y, x];
