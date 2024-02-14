@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("battleship_CS2160")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c418a67c83306df400c9688b418a243a54f65a3c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2514652387ec2e5801d6ddaae9d8cb881c51022")]
 [assembly: System.Reflection.AssemblyProductAttribute("battleship_CS2160")]
 [assembly: System.Reflection.AssemblyTitleAttribute("battleship_CS2160")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
