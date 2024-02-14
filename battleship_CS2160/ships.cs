@@ -3,195 +3,126 @@
     public abstract class Ships
     {
         // create ships atrubutes 
-        private int Health;
-        private int Length;
-        private int BowX;
-        private int BowY;
-        private int SternX;
-        private int SternY;
-        private string Name;
+        private readonly int Health;
+        private readonly int Length;
+        private readonly string? Name;
 
         public int get_health()
 
         {
-            return this.Health;
-            throw new System.NotImplementedException();
-        }
-
-        public void set_Health(int health)
-        {
-            this.Health = health;
-        }
-
-
-        public void set_BowX(int bowX)
-        {
-            this.BowX = bowX;
-
-        }
-
-        public void set_BowY(int bowY)
-        {
-            this.BowY = bowY;
-        }
-
-        public void set_SternY(int sternY)
-        {
-            this.SternY = sternY;
-
-        }
-
-        public void set_SternX(int sternX)
-        {
-            this.SternX = sternX;
-
-        }
-
-        public int get_SternX()
-        {
-            return this.SternX;
-            throw new System.NotImplementedException();
-        }
-
-        public int get_SternY()
-        {
-            return this.SternY;
-            throw new System.NotImplementedException();
-        }
-
-        public int get_BowX()
-        {
-            return this.BowX;
-            throw new System.NotImplementedException();
-        }
-
-        public int get_BowY()
-        {
-            return this.BowX;
+            return Health;
             throw new System.NotImplementedException();
         }
 
         public virtual int get_Length()
         {
-            return this.Length;
+            return Length;
 
         }
 
         public virtual string get_Name()
         {
-            return this.Name;
+            return Name;
 
         }
     }
 
     public class Destroyer : Ships
     {
-
-        int length = 2;
-        int BowX;
-        int BowY;
-        int SternX;
-        int SternY;
-        private string Name;
+        private readonly int length = 2;
+        private readonly string Name;
 
         public Destroyer()
         {
             Name = "Destroyer";
-            this.length = 2;
-            this.set_Health(this.length);
+            length = 2;
+
         }
 
         public override string get_Name()
         {
-            return this.Name;
+            return Name;
 
         }
 
         public override int get_Length()
         {
-            return this.length;
+            return length;
         }
     }
 
     public class Submarine : Ships
     {
-        string Name;
-        int BowX;
-        int BowY;
-        int SternX;
-        int SternY;
-        int length;
+        private readonly string Name;
+
+        private readonly int length;
         public Submarine()
         {
             Name = "Submarine";
-            this.length = 3;
-            this.set_Health(this.length);
+            length = 3;
+
         }
 
         public override string get_Name()
         {
-            return this.Name;
+            return Name;
 
         }
 
         public override int get_Length()
         {
-            return this.length;
+            return length;
         }
     }
 
     public class Battleship : Ships
     {
-        int BowX;
-        int BowY;
-        int SternX;
-        int SternY;
-        int length;
-        string Name;
+        private readonly int length;
+        private readonly string Name;
 
         public Battleship()
         {
-            this.Name = "Battleship";
-            this.length = 4;
-            this.set_Health(this.length);
+            Name = "Battleship";
+            length = 4;
+
         }
         public override string get_Name()
         {
-            return this.Name;
+            return Name;
 
         }
 
         public override int get_Length()
         {
-            return this.length;
+            return length;
         }
     }
 
     public class Carrier : Ships
     {
-        int BowX;
-        int BowY;
-        int SternX;
-        int SternY;
-        int length = 5;
-        string Name;
+        private readonly int BowX;
+        private readonly int BowY;
+        private readonly int SternX;
+        private readonly int SternY;
+        private readonly int length = 5;
+        private readonly string Name;
 
         public Carrier()
         {
-            this.Name = "Carrier";
-            this.length = 5;
-            this.set_Health(this.length);
+            Name = "Carrier";
+            length = 5;
+
         }
 
         public override string get_Name()
         {
-            return this.Name;
+            return Name;
 
         }
 
         public override int get_Length()
         {
-            return this.length;
+            return length;
         }
     }
 }

@@ -8,14 +8,13 @@
     /// </summary>
     public class Game
     {
-        string[,] player_Board;
-        int rows = 10; // rows of the board 
-        int cols = 10; // cols on the board 
+        private string[,]? player_Board;
+        private readonly int rows = 10; // rows of the board 
+        private readonly int cols = 10; // cols on the board 
 
-        private int opponent_Board;
 
         public bool cheak_win_condishions(Player player, Opponent opponent)
-        {
+        { ///will cheak if player has lost all heath points repersented by the number of total ship lengths  
             bool win = false;
             if (player.total_ship_health <= 0)
             {
@@ -128,7 +127,7 @@
             throw new System.NotImplementedException();
         }
 
-        public void set_Ship_Inedx_On_Board(String[,] board, int x, int y)
+        public void set_Ship_Inedx_On_Board(string[,] board, int x, int y)
         {
 
 
@@ -151,12 +150,12 @@
 
     public class Player : Game
     {
-        List<Ships> player_Ship_List;
-        private int starting_number_of_ships;
+        private readonly List<Ships> player_Ship_List;
+        private readonly int starting_number_of_ships;
         public int total_ship_health = 0;
-        private int ship_lengh_counter = 0;
-        private int number_Of_Ships_Remaining;
-        private int[,] ship_locations;
+        private readonly int ship_lengh_counter = 0;
+        private readonly int number_Of_Ships_Remaining;
+        private readonly int[,] ship_locations;
         public string[,] player_Board;
 
 
@@ -173,10 +172,10 @@
 
             foreach (Ships ship in player_Ship_List)
             {
-                this.total_ship_health += ship.get_Length();
+                total_ship_health += ship.get_Length();
             }
 
-            ship_locations = new int[2, this.total_ship_health];
+            ship_locations = new int[2, total_ship_health];
             starting_number_of_ships = player_Ship_List.Count;
             number_Of_Ships_Remaining = starting_number_of_ships;
             player_Board = create_Board();
@@ -191,7 +190,7 @@
         public int[] convert_Cordents(string input)
         {
             // Ensure the input is in the correct format (e.g., "A4")
-            if (input.Length < 2 || input.Length > 3 || !char.IsLetter(input[0]) || !char.IsDigit(input[input.Length - 1]))
+            if (input.Length < 2 || input.Length > 3 || !char.IsLetter(input[0]) || !char.IsDigit(input[^1]))
             {
                 throw new ArgumentException("Invalid input format. Please enter a location in the format 'A1' to 'J10'.");
             }
@@ -200,7 +199,7 @@
             int col = char.ToUpper(input[0]) - 'A';
 
             // Convert the digit part to a numeric index (1 -> 0, 2 -> 1, etc.)
-            int row = int.Parse(input.Substring(1)) - 1;
+            int row = int.Parse(input[1..]) - 1;
 
             // Return the indices as an array
             return new int[] { row, col };
@@ -208,12 +207,8 @@
 
         public void set_Ship_Location(Ships ship)
         {
-            int bow_x = 0;
-            int bow_y = 0;
-            int stern_x = 0;
-            int stern_y = 0;
             int shipSize = ship.get_Length();
-            int[] location = new int[2];
+            _ = new int[2];
             bool place_ship = false;
 
 
@@ -230,9 +225,9 @@
 
                 string user_Input_Bow = Console.ReadLine();
 
-                location = convert_Cordents(user_Input_Bow);
-                bow_x = location[0];
-                bow_y = location[1];
+                int[] location = convert_Cordents(user_Input_Bow);
+                int bow_x = location[0];
+                int bow_y = location[1];
 
 
                 //select location to place the Stern
@@ -240,10 +235,8 @@
                 Console.WriteLine("Place stern");
                 string user_Input_Stern = Console.ReadLine();
                 location = convert_Cordents(user_Input_Stern);
-
-
-                stern_x = location[0];
-                stern_y = location[1];
+                int stern_x = location[0];
+                int stern_y = location[1];
 
 
                 //cheak if ship in this location:
@@ -281,13 +274,6 @@
                         }
                     }
 
-
-
-                    //set ships local (X,Y)
-                    ship.set_BowX(bow_x);
-                    ship.set_BowY(bow_y);
-                    ship.set_SternX(stern_x);
-                    ship.set_SternY(stern_y);
                     place_ship = true;
 
                 }
@@ -307,8 +293,7 @@
         public bool cheak_hit(int x, int y, string[,] board)
         {
             bool is_There_A_Ship_At_This_Location = false;
-
-            string element_of_board = board[x, y];
+            _ = board[x, y];
 
             if (board[y, x].Equals("[S]") || board[y, x].Equals("[X]"))
             {
@@ -324,11 +309,11 @@
         public void fire(Opponent opponent)
         {
             string[,] board = opponent.opponent_board;
-            int[] location = new int[2];
+            _ = new int[2];
             Console.WriteLine("fire the cannon at location [X,Y]:");
 
             string user_Input_Stern = Console.ReadLine();
-            location = convert_Cordents(user_Input_Stern);
+            int[] location = convert_Cordents(user_Input_Stern);
             int x = location[0];
             int y = location[1];
             bool hit = cheak_hit(x, y, opponent.opponent_board);
@@ -346,21 +331,11 @@
             Console.Clear();
             display_board(board);
             Console.WriteLine("");
-            display_board(this.player_Board);
+            display_board(player_Board);
 
 
 
 
-        }
-
-        public void display()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void get_ship_location()
-        {
-            throw new System.NotImplementedException();
         }
 
         public void place_Ships_on_Board()
@@ -376,15 +351,15 @@
 
     public class Opponent : Game
     {
-        List<Ships> ship_List;
-        private int starting_number_of_ships;
-        private int number_Of_Ships_Remaining;
+        private readonly List<Ships> ship_List;
+        private readonly int starting_number_of_ships;
+        private readonly int number_Of_Ships_Remaining;
         public int number_of_total_health;
-        private string[] ship_locations;
+        private readonly string[] ship_locations;
         public string[,] opponent_board;
-        String lastShot = "";
-        int lastShotX = 0;
-        int lastShotY = 0;
+        private readonly string lastShot = "";
+        private int lastShotX = 0;
+        private int lastShotY = 0;
 
 
 
@@ -402,7 +377,7 @@
             number_of_total_health = 0;
             foreach (Ships ship in ship_List)
             {
-                this.number_of_total_health += ship.get_Length();
+                number_of_total_health += ship.get_Length();
             }
 
 
@@ -424,21 +399,23 @@
         public void get_ship_locations()
         {
             foreach (Ships ship in ship_List)
+            {
                 throw new System.NotImplementedException();
+            }
         }
 
         public void fire(Player player)
         {
-            Random random = new Random();
+            Random random = new();
             int x = 0;
             int y = 0;
             int i = random.Next(2);
 
 
 
-            if (this.lastShot.Equals("[X]") && i % 1 == 0)
+            if (lastShot.Equals("[X]") && i % 1 == 0)
             {
-                y = this.lastShotX + random.Next(2);
+                y = lastShotX + random.Next(2);
                 if (y < 0)
                 {
                     y = 0;
@@ -449,9 +426,9 @@
                 }
 
             }
-            else if (this.lastShotY.Equals("[X]") && i % 2 == 0)
+            else if (lastShotY.Equals("[X]") && i % 2 == 0)
             {
-                x = this.lastShotY + random.Next(2);
+                x = lastShotY + random.Next(2);
 
                 if (x < 0)
                 {
@@ -485,8 +462,8 @@
                 player.player_Board[y, x] = "[0]";
             }
 
-            this.lastShotX = x;
-            this.lastShotY = y;
+            lastShotX = x;
+            lastShotY = y;
 
             Console.Clear();
             display_board(opponent_board);
@@ -501,8 +478,7 @@
         public bool cheak_hit(int x, int y, string[,] board)
         {
             bool is_There_A_Ship_At_This_Location = false;
-
-            string element_of_board = board[x, y];
+            _ = board[x, y];
 
             if (board[y, x].Equals("[S]") || board[y, x].Equals("[X]"))
             {
@@ -521,7 +497,7 @@
         {
             foreach (Ships ship in ship_List)
             {
-                Random random = new Random();
+                Random random = new();
 
                 int length = ship.get_Length();
                 bool ship_placed = false;
