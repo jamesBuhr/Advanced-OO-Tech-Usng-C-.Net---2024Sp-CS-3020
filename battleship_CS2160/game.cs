@@ -1,12 +1,15 @@
 ﻿namespace battleship_CS2160
 
 {
-
+    /// <summary>
+    ///  gives the outline of what the game should be:
+    ///  player(you ) and the ,opponet 
+    ///  
+    /// </summary>
     public class Game
     {
         string[,] player_Board;
-        int turn_Number;
-        int rows = 10;
+        int rows = 10; // rows of the board 
         int cols = 10;
 
         private int opponent_Board;
@@ -58,10 +61,6 @@
             }
         }
 
-        public void cheat_Mode()
-        {
-            throw new System.NotImplementedException();
-        }
 
         public string[,] create_Board()
         {
