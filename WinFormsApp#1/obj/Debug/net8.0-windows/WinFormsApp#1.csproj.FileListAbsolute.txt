@@ -1,0 +1,7 @@
+C:\GithubRepos\CS2160\WinFormsApp#1\obj\Debug\net8.0-windows\WinFormsApp_1.Form1.resources
+C:\GithubRepos\CS2160\WinFormsApp#1\obj\Debug\net8.0-windows\WinFormsApp_1.Properties.Resources.resources
+C:\GithubRepos\CS2160\WinFormsApp#1\obj\Debug\net8.0-windows\WinFormsApp#1.csproj.GenerateResource.cache
+C:\GithubRepos\CS2160\WinFormsApp#1\obj\Debug\net8.0-windows\WinFormsApp#1.GeneratedMSBuildEditorConfig.editorconfig
+C:\GithubRepos\CS2160\WinFormsApp#1\obj\Debug\net8.0-windows\WinFormsApp#1.AssemblyInfoInputs.cache
+C:\GithubRepos\CS2160\WinFormsApp#1\obj\Debug\net8.0-windows\WinFormsApp#1.AssemblyInfo.cs
+C:\GithubRepos\CS2160\WinFormsApp#1\obj\Debug\net8.0-windows\WinFormsApp#1.csproj.CoreCompileInputs.cache
