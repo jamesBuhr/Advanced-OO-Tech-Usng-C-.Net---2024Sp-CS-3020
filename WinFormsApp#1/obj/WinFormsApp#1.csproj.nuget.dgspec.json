@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GithubRepos\\CS2160\\WinFormsApp#1\\WinFormsApp#1.csproj": {}
+    "C:\\GithubRepos\\CS2160\\Advanced-OO-Tech-Usng-C-.Net---2024Sp-CS-3020\\WinFormsApp#1\\WinFormsApp#1.csproj": {}
   },
   "projects": {
-    "C:\\GithubRepos\\CS2160\\WinFormsApp#1\\WinFormsApp#1.csproj": {
+    "C:\\GithubRepos\\CS2160\\Advanced-OO-Tech-Usng-C-.Net---2024Sp-CS-3020\\WinFormsApp#1\\WinFormsApp#1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GithubRepos\\CS2160\\WinFormsApp#1\\WinFormsApp#1.csproj",
+        "projectUniqueName": "C:\\GithubRepos\\CS2160\\Advanced-OO-Tech-Usng-C-.Net---2024Sp-CS-3020\\WinFormsApp#1\\WinFormsApp#1.csproj",
         "projectName": "WinFormsApp#1",
-        "projectPath": "C:\\GithubRepos\\CS2160\\WinFormsApp#1\\WinFormsApp#1.csproj",
+        "projectPath": "C:\\GithubRepos\\CS2160\\Advanced-OO-Tech-Usng-C-.Net---2024Sp-CS-3020\\WinFormsApp#1\\WinFormsApp#1.csproj",
         "packagesPath": "C:\\Users\\jimbb\\.nuget\\packages\\",
-        "outputPath": "C:\\GithubRepos\\CS2160\\WinFormsApp#1\\obj\\",
+        "outputPath": "C:\\GithubRepos\\CS2160\\Advanced-OO-Tech-Usng-C-.Net---2024Sp-CS-3020\\WinFormsApp#1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jimbb\\AppData\\Roaming\\NuGet\\NuGet.Config",
